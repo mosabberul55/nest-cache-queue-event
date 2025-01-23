@@ -7,6 +7,8 @@ import { redisStore } from 'cache-manager-redis-yet';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { BullModule } from '@nestjs/bullmq';
 import { VideoModule } from './video/video.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TaskModule } from './task/task.module';
 
 @Module({
   imports: [
@@ -26,8 +28,10 @@ import { VideoModule } from './video/video.module';
         removeOnFail: 3000,
       },
     }),
+    ScheduleModule.forRoot(),
     StudentModule,
     VideoModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],
