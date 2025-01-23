@@ -1,4 +1,4 @@
-export class CreateOrderDto {
+export class OrderCreatedEvent {
   name: string;
   description: string;
 }

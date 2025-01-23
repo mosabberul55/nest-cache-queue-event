@@ -10,6 +10,7 @@ import { VideoModule } from './video/video.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TaskModule } from './task/task.module';
 import { OrderModule } from './order/order.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { OrderModule } from './order/order.module';
       },
     }),
     ScheduleModule.forRoot(),
+    EventEmitterModule.forRoot(),
     StudentModule,
     VideoModule,
     TaskModule,
