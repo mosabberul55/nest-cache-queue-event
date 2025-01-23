@@ -9,6 +9,7 @@ import { BullModule } from '@nestjs/bullmq';
 import { VideoModule } from './video/video.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TaskModule } from './task/task.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { TaskModule } from './task/task.module';
     StudentModule,
     VideoModule,
     TaskModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
