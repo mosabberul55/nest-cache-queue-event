@@ -13,6 +13,8 @@ import { OrderModule } from './order/order.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { FileUploadModule } from './file-upload/file-upload.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -38,6 +40,10 @@ import { FileUploadModule } from './file-upload/file-upload.module';
         limit: 4,
       },
     ]),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'), // Serve files from the "uploads" folder
+      serveRoot: '/uploads', // Base path for serving static files
+    }),
     ScheduleModule.forRoot(),
     EventEmitterModule.forRoot(),
     StudentModule,

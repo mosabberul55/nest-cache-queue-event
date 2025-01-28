@@ -14,6 +14,7 @@ import { diskStorage } from 'multer';
           cb(null, filename);
         },
       }),
+      limits: { fileSize: 2 * 1024 * 1024 }, // Limit file size to 2MB
     }),
   ],
   controllers: [FileUploadController],
