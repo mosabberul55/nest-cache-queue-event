@@ -11,6 +11,8 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { TaskModule } from './task/task.module';
 import { OrderModule } from './order/order.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { FileUploadModule } from './file-upload/file-upload.module';
 
 @Module({
   imports: [
@@ -30,15 +32,28 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
         removeOnFail: 3000,
       },
     }),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 10 * 1000,
+        limit: 4,
+      },
+    ]),
     ScheduleModule.forRoot(),
     EventEmitterModule.forRoot(),
     StudentModule,
     VideoModule,
     TaskModule,
     OrderModule,
+    FileUploadModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: 'APP_GUARD',
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
