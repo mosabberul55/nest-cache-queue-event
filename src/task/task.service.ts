@@ -21,9 +21,9 @@ export class TaskService {
   handleTimeout() {
     this.logger.debug('Called once after 5 seconds');
   }
-  create(createTaskDto: CreateTaskDto) {
-    return 'This action adds a new task';
-  }
+  // create(createTaskDto: CreateTaskDto) {
+  //   return 'This action adds a new task';
+  // }
 
   findAll() {
     return `This action returns all task`;
@@ -33,9 +33,9 @@ export class TaskService {
     return `This action returns a #${id} task`;
   }
 
-  update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
-  }
+  // update(id: number, updateTaskDto: UpdateTaskDto) {
+  //   return `This action updates a #${id} task`;
+  // }
 
   remove(id: number) {
     return `This action removes a #${id} task`;
